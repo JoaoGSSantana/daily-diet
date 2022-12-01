@@ -21,7 +21,7 @@ import { AppError } from "@utils/AppError";
 import { validateMealDTO } from "@utils/validateMealDTO";
 
 import { MealDTO } from "@storage/meals/MealDTO";
-import { addMeals } from "@storage/meals/addMeals";
+import { updateMeal } from "@storage/meals/updateMeal";
 
 type RouteProps = {
   mealForUpdate: MealDTO;
@@ -43,7 +43,7 @@ export function UpdateMeal() {
     try {
       validateMealDTO(meal);
 
-      await addMeals(meal);
+      await updateMeal(meal);
 
       const type = meal.onTheDiet ? "SUCCESS" : "FAILURE";
 

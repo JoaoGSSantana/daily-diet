@@ -17,7 +17,7 @@ import {
 } from "@utils/createSectionListData";
 
 import { MealDTO } from "@storage/meals/MealDTO";
-import { getDietPercentage } from "@utils/dietUtils";
+import { getBestDietSequence, getDietPercentage } from "@utils/dietUtils";
 
 export function Home() {
   const [mealsList, setMealsList] = useState<MealSectionList[]>([]);
@@ -49,6 +49,8 @@ export function Home() {
     } finally {
       const percentageValue = await getDietPercentage();
       setPercentage(percentageValue);
+
+      await getBestDietSequence();
 
       setIsLoading(false);
     }

@@ -24,7 +24,7 @@ export async function getDietPercentage() {
     ((100 * mealsOnTheDietQuantity) / mealsQuantity).toFixed(2)
   );
 
-  return typeof result === "number" ? result : 0;
+  return isNaN(result) ? 0 : result;
 }
 
 export async function getBestDietSequence() {
@@ -33,7 +33,7 @@ export async function getBestDietSequence() {
 
   const mealsOnTheDiet = [];
 
-  for (let index = 0; index <= meals.length; index++) {
+  for (let index = 0; index < meals.length; index++) {
     if (meals[index].onTheDiet) {
       mealsOnTheDiet.push(meals[index]);
     } else {
